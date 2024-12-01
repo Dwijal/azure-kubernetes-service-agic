@@ -202,6 +202,13 @@ time="2023-09-08T01:23:33Z" level=info msg="Using managed identity extension to 
 time="2023-09-08T01:23:33Z" level=info msg="Resolving to user assigned identity, client id is b1a0abb5-6c7d-45cc-bbc8-5f89fe0aa50f."
 ```
 
+
+Summary:
+AKS Nodes have the general permissions (via the Managed Identity) to access Azure DNS.
+1. External DNS pod (and any other pod configured with the azure-config-file) can authenticate and modify DNS records in Azure DNS.
+2. Other pods in the AKS cluster won't have the ability to modify DNS records unless they are specifically configured with the correct azure-config-file.
+3. So, in conclusion, while the nodes have the permissions, only the pods that use the azure-config-file secret and are configured to authenticate with Azure can actually perform actions on Azure DNS.
+
 ## External DNS References
 - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/azure.md
 - https://github.com/kubernetes-sigs/external-dns
