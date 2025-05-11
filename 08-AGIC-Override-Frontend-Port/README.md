@@ -63,7 +63,7 @@ curl http://<INGRESS-IP>:8080/
 http://<INGRESS-IP>:8080/
 ```
 
-## Step-04: Verify Application Gateway using Azure Portal
+## Observation
 - **Listeners Tab:** Review Rules Tab 
   - You should find the port as `8080`
 
